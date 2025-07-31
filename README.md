@@ -91,15 +91,6 @@ For example,
 ```
 python evaluator.py --mode dataset --gen_root E:\yl\1\CRM\CRM\724_output_mesh --gt_root E:\potterylike_dataset\tmp --gen_rotate_y -90 --model_ids '55'
 ```
-
-## Reporting Results
-Present the evaluation results in a clear and concise manner. The visualization results and tables should be illustrated in [slides](./res.pptx). 
-The slides should include:
-1. Method name
-2. Hyperparameters of method (iterations, training dataset size, tese dataset size)
-3. Visualization rendered color results, normal map  (GT and rendered)
-4. Visualization of mesh (if the format can be inserted in slides)
-
 ## Related projects
 We collect code from following projects. We thanks for the contributions from the open-source community!
 
