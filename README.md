@@ -1,6 +1,4 @@
-# Evaluation of Image to 3D Methods
-
-## Introduction
+# Evaluation of Single Image to 3D Methods
 
 ## Methods to evaluate
 ### Image to 3D Methods
