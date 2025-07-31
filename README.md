@@ -5,12 +5,14 @@
 ## Methods to evaluate
 ### Image to 3D Methods
 - [x] [Zero-1-to-3: Zero-shot One Image to 3D Object](https://github.com/cvlab-columbia/zero123)
-- [x] [Convolutional Reconstruction Model](https://github.com/thu-ml/CRM.git)
-- [x] [Era3D](https://github.com/xxlong0/Wonder3D.git)
+- [x] [Convolutional Reconstruction Model: Single Image to 3D Textured Mesh with Convolutional Reconstruction Model](https://github.com/thu-ml/CRM.git)
+- [x] [Era3D: High-Resolution Multiview Diffusion using Efficient Row-wise Attention](https://github.com/xxlong0/Wonder3D.git)
 - [x] [InstantMesh: Efficient 3D Mesh Generation from a Single Image with Sparse-view Large Reconstruction Models](https://github.com/TencentARC/InstantMesh)
-- [x] [SyncDreamer](https://github.com/liuyuan-pal/SyncDreamer/tree/main)
+- [x] [SyncDreamer: Generating Multiview-consistent Images from a Single-view Image](https://github.com/liuyuan-pal/SyncDreamer/tree/main)
 - [x] [ViVid-1-to-3: Novel View Synthesis with Video Diffusion Models](https://github.com/ubc-vision/vivid123)
-
+- [x] [Wonder3D: Single Image to 3D using Cross-Domain Diffusion](https://github.com/xxlong0/Wonder3D)
+- [x] [Free3D: Consistent Novel View Synthesis without 3D Representation](https://github.com/lyndonzheng/Free3D)
+- [x] [TripoSR: Fast 3D Object Reconstruction from a Single Image](https://github.com/VAST-AI-Research/TripoSR)
 ## Dataset
 ### Render the result of the specified perspective
 0. Download blender script from [utl](https://download.blender.org/release/Blender3.2) and unzip it at current path.
@@ -51,7 +53,7 @@ Recommend selecting fisrt image as input.
 0. Run specific method and *tuning hyperparameters*  (set voxel_size=0.5 if possible)
 tips：
 - If you encounter some problems in the installation, please google it first. Most of the issues have a solution in github issues.
-- It is recommended to install the repository on the Windows system, most methods use Open3d, which is not feasible in the Liunx system of the Shanghai science and technology cluster.
+- It is recommended to install the repository on the Windows system, most methods use Open3d, which is not feasible in the Liunx system.
 
 ### Evaluation for rendered images 
 ```
@@ -69,7 +71,6 @@ Before running teh command, please read these items:
 4. Download SAM checkpoint [here](https://dl.fbaipublicfiles.com/segment_anything/sam_vit_h_4b8939.pth) and mode to ```./ckpts```
 
 ### Evaluation for mesh
-This version need to be tested. Please wait for updating.
 ```
 # Optional (If encounter "DistutilsPlatformError", use it)
 SET DISTUTILS_USE_SDK=1
@@ -82,6 +83,16 @@ For example
 python eval_mesh.py --pr_mesh D:\wyh\InstantMesh\outputs\instant-mesh-large\meshes\Ecoforms_Plant_Container_FB6_Tur.obj --name instantmesh --camera_info_dir Ecoforms_Plant_Container_FB6_Tur\Ecoforms_Plant_Container_FB6_Tur-gt --num_images 12 --gt_mesh Ecoforms_Plant_Container_FB6_Tur\Ecoforms_Plant_Container_FB6_Tur-mesh\meshes\model.obj --output logs
 ```
 
+###  Evaluation for texture
+We use CLIP similarity to evaluate texture of mesh.
+```
+python evaluator.py --mode dataset --gen_root <Your Generated Mesh Folder> --gt_root <Your GroundTruth Path> --gen_rotate_y <Rotation(angle)> --model_ids <Tested Case Name(It can also be a list)>
+```
+For example,
+```
+python evaluator.py --mode dataset --gen_root E:\yl\1\CRM\CRM\724_output_mesh --gt_root E:\potterylike_dataset\tmp --gen_rotate_y -90 --model_ids '55'
+```
+
 ## Reporting Results
 Present the evaluation results in a clear and concise manner. The visualization results and tables should be illustrated in [slides](./res.pptx). 
 The slides should include:
@@ -90,11 +101,9 @@ The slides should include:
 3. Visualization rendered color results, normal map  (GT and rendered)
 4. Visualization of mesh (if the format can be inserted in slides)
 
-## Conclusion
-Please communicate in a timely manner
-
 ## Related projects
 We collect code from following projects. We thanks for the contributions from the open-source community!
+
 [SyncDreamer](https://github.com/liuyuan-pal/SyncDreamer/tree/main)
 
 [DTUeval-python](https://github.com/jzhangbs/DTUeval-python)
