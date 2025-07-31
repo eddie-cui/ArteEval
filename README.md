@@ -50,8 +50,7 @@ You can set cammera distance through ```--camera_dist <float>``` which default i
     ```
 Recommend selecting fisrt image as input.
 ## Evaluation Metrics
-0. Run specific method and *tuning hyperparameters*  (set voxel_size=0.5 if possible)
-tips：
+
 - If you encounter some problems in the installation, please google it first. Most of the issues have a solution in github issues.
 - It is recommended to install the repository on the Windows system, most methods use Open3d, which is not feasible in the Liunx system.
 
